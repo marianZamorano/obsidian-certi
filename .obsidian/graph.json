@@ -1,6 +1,6 @@
 {
   "collapse-filter": false,
-  "search": "",
+  "search": "-path:Plantillas",
   "showTags": false,
   "showAttachments": true,
   "hideUnresolved": false,
@@ -11,83 +11,90 @@
       "query": "path:Proyecto",
       "color": {
         "a": 1,
-        "rgb": 10980346
+        "rgb": 9133302
       }
     },
     {
       "query": "path:Fuentes OR file:\"Libro de Horngren\"",
       "color": {
         "a": 1,
-        "rgb": 16436245
+        "rgb": 15381256
       }
     },
     {
       "query": "path:\"Wiki/Panoramas\"",
       "color": {
         "a": 1,
-        "rgb": 16281969
+        "rgb": 15680580
       }
     },
     {
       "query": "file:index OR file:log OR file:CLAUDE OR file:README",
       "color": {
         "a": 1,
-        "rgb": 9741240
+        "rgb": 10265519
       }
     },
     {
       "query": "tag:#sistemas-de-costeo OR tag:#abc OR tag:#inventarios OR tag:#capacidad OR tag:#calidad",
       "color": {
         "a": 1,
-        "rgb": 6333946
+        "rgb": 3900150
       }
     },
     {
       "query": "tag:#presupuestos OR tag:#variaciones OR tag:#control",
       "color": {
         "a": 1,
-        "rgb": 3462041
+        "rgb": 2278750
       }
     },
     {
       "query": "tag:#cvu OR tag:#decisiones OR tag:#precios OR tag:#riesgo OR tag:#comportamiento-de-costos",
       "color": {
         "a": 1,
-        "rgb": 16486972
+        "rgb": 16347926
       }
     },
     {
       "query": "tag:#aplicacion-de-costos OR tag:#clientes",
       "color": {
         "a": 1,
-        "rgb": 2282478
+        "rgb": 440020
       }
     },
     {
       "query": "tag:#estrategia OR tag:#organizacion OR tag:#administracion-de-costos",
       "color": {
         "a": 1,
-        "rgb": 16020150
+        "rgb": 15485081
       }
     },
     {
       "query": "tag:#fundamentos OR tag:#terminologia",
       "color": {
         "a": 1,
-        "rgb": 10741301
+        "rgb": 8702998
+      }
+    },
+    {
+      "query": "path:Diario OR path:00-Inbox OR file:2026-10-27",
+      "color": {
+        "a": 1,
+        "rgb": 1357990
       }
     }
   ],
   "collapse-display": false,
   "showArrow": false,
   "textFadeMultiplier": 0,
-  "nodeSizeMultiplier": 1,
-  "lineSizeMultiplier": 1,
+  "nodeSizeMultiplier": 1.8,
+  "lineSizeMultiplier": 0.6,
   "collapse-forces": true,
   "centerStrength": 0.518713248970312,
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.7966535350911211,
+  "scale": 0.8291442095636375,
   "close": true
 }
