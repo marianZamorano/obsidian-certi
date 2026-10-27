@@ -8,6 +8,12 @@ tags: [wiki, indice]
 
 Catálogo de todas las páginas del wiki. Lo mantiene el LLM; ver [[CLAUDE]] para las reglas.
 
+## Proyecto (diseño del sistema)
+
+- [[Arquitectura del sistema]] — arquitectura en capas del sistema de contabilidad de costos.
+- [[Modelo de dominio]] — módulos del dominio y su relación con los conceptos del wiki.
+- [[ADR-0001 Arquitectura en capas]] — por qué capas y monolito modular.
+
 ## Panoramas
 
 - [[Contabilidad de costos]] — mapa general: calcular costos, planear y controlar, tomar decisiones.

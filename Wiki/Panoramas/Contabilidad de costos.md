@@ -48,6 +48,10 @@ El libro organiza todo en tres propósitos ([[Contabilidad de costos - Horngren.
 - [[Estrategia y evaluación del desempeño]]
 - [[Aplicación de costos]]
 
+## Uso en el proyecto
+
+Estos conceptos son el dominio del sistema que se está construyendo: ver [[Arquitectura del sistema]] y [[Modelo de dominio]].
+
 ## Preguntas abiertas
 
 - ¿Qué sistema de costeo encaja mejor con el proyecto: órdenes de trabajo, procesos o ABC?
