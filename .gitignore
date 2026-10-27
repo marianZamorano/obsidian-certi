@@ -1,0 +1,17 @@
+# Estado local de Obsidian (cambia constantemente, no se versiona)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspaces.json
+.obsidian/cache
+.obsidian/plugins/*/data.json.bak
+
+# Papelera de Obsidian
+.trash/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude Code (configuración local)
+.claude/settings.local.json
