@@ -9,7 +9,7 @@ tags: [proyecto, arquitectura, adr]
 
 ## Contexto
 
-Según el [[Modelo de negocio]], el sistema se ofrece como suscripción a startups de Bolivia. El costo variable por cliente debe ser muy bajo para llegar al punto de equilibrio (~91 clientes) con costos fijos de Bs 15,700/mes. Las startups pagan planes con distintos módulos habilitados.
+Según el [[Modelo de negocio]], Crecost se ofrece como suscripción a startups de Bolivia y lo opera una sola persona. El costo variable por cliente debe ser muy bajo para llegar al punto de equilibrio (~58 clientes) con costos fijos de Bs 11,333/mes. Las startups pagan planes con distintos módulos habilitados.
 
 ## Decisión
 

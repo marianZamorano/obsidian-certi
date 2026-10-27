@@ -7,7 +7,7 @@ tags: [proyecto, arquitectura, arquitectura-en-capas]
 
 # Arquitectura del sistema
 
-Sistema de contabilidad de costos con enfoque gerencial, basado en [[Libro de Horngren]]. Decisión de base: [[ADR-0001 Arquitectura en capas]]. Módulos del dominio: [[Modelo de dominio]].
+**Crecost**: sistema de contabilidad de costos con enfoque gerencial, basado en [[Libro de Horngren]]. Stack: React + NestJS + PostgreSQL ([[ADR-0003 Stack React, NestJS y PostgreSQL]]). Decisión de base: [[ADR-0001 Arquitectura en capas]]. Módulos del dominio: [[Modelo de dominio]].
 
 ## Vista de capas
 
@@ -67,8 +67,9 @@ Un caso de uso por intención del usuario. Ejemplos:
 
 ## Decisiones pendientes
 
-- [ ] Lenguaje y framework (afecta solo a Presentación e Infraestructura).
-- [ ] Motor de base de datos.
+- [x] Lenguaje y framework → React + NestJS en TypeScript ([[ADR-0003 Stack React, NestJS y PostgreSQL]]).
+- [x] Motor de base de datos → PostgreSQL (mismo ADR).
+- [ ] Autenticación, hosting y CI/CD.
 - [ ] Alcance de la primera versión (propuesta: los módulos del plan Semilla del [[Modelo de negocio]]: Clasificación de costos y CVU).
 - [x] Monolito modular frente a servicios separados → monolito modular ([[ADR-0001 Arquitectura en capas]]).
 - [x] Cómo atender a muchas startups → multi-tenant con base de datos compartida ([[ADR-0002 SaaS multi-tenant]]).

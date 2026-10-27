@@ -11,7 +11,23 @@ tags: [proyecto, negocio, bolivia]
 > [!warning] Simulación
 > El sistema no saldrá realmente a producción. Se simula un lanzamiento como SaaS para **startups de Bolivia**, con contacto con dueños de startups reales o simulados. Todas las cifras son **supuestos** para el ejercicio y deben validarse.
 
-**Nombre de trabajo:** *Certi Costos*, un SaaS de contabilidad de costos para startups. Arquitectura en [[Arquitectura del sistema]].
+**Nombre:** **Crecost**, un SaaS de contabilidad de costos para startups. Arquitectura en [[Arquitectura del sistema]]; stack en [[ADR-0003 Stack React, NestJS y PostgreSQL]].
+
+## Equipo: una persona + Claude
+
+Crecost lo construye y lo opera **una sola persona (el fundador)**, que cubre todos los roles de un equipo apoyándose en Claude:
+
+| Rol | Lo hace el fundador | Apoyo de Claude |
+|---|---|---|
+| Product owner | Prioriza el backlog con lo que dicen los clientes | Resume entrevistas, propone historias de usuario |
+| Arquitecto | Aprueba las decisiones (ADR) | Propone diseños que respetan las capas y redacta los ADR |
+| Desarrollo front (React) y back (NestJS) | Revisa y hace merge | Escribe código y pruebas |
+| QA | Define criterios de aceptación | Genera pruebas desde los ejemplos del libro y revisa el código |
+| DevOps | Despliega y vigila costos | Configura CI/CD, respaldos y monitoreo |
+| Soporte y onboarding | Atiende a los clientes | Redacta la ayuda y respuestas frecuentes |
+| Ventas y marketing | Viaja, presenta y cierra | Prepara guiones, presentaciones y contenido |
+
+Consecuencia clave: **el soporte no es un costo variable en dinero sino en tiempo del fundador.** Su tiempo es el recurso restringido del negocio (ver [[Niveles de capacidad]]): cada hora de soporte es una hora menos de desarrollo o de ventas.
 
 ## El problema
 
@@ -33,8 +49,8 @@ Las herramientas existentes son caras, están pensadas para empresas grandes o s
 | **3. Canales** | Alianzas con incubadoras y aceleradoras (licencias por cohorte), comunidades de emprendedores y eventos de startups, contenido educativo (talleres "Costea tu startup", plantillas, LinkedIn y TikTok), recomendación entre fundadores. |
 | **4. Relación con clientes** | Autoservicio con onboarding guiado, prueba gratis de 30 días, comunidad (grupo de WhatsApp y webinars mensuales) y soporte por chat. Acompañamiento personalizado solo en el plan Escala. |
 | **5. Fuentes de ingreso** | Suscripción mensual o anual por planes (ver [[#Planes y precios]]), licencias por cohorte para incubadoras y, más adelante, talleres pagados de formación. |
-| **6. Recursos clave** | La plataforma (el dominio contable del [[Libro de Horngren]] implementado en [[Modelo de dominio]]), el equipo (desarrollo y contador), las alianzas con incubadoras y el contenido educativo. |
-| **7. Actividades clave** | Desarrollo y mantenimiento de la plataforma, soporte y onboarding, creación de contenido, gestión de alianzas, cumplimiento tributario del propio negocio. |
+| **6. Recursos clave** | La plataforma (el dominio contable del [[Libro de Horngren]] implementado en [[Modelo de dominio]]), el fundador asistido por Claude, esta bóveda como memoria del proyecto, las alianzas con incubadoras y el contenido educativo. |
+| **7. Actividades clave** | Desarrollo y mantenimiento de la plataforma, soporte y onboarding, **giras comerciales a Cochabamba y Santa Cruz** ([[Plan de giras comerciales]]), creación de contenido, gestión de alianzas. |
 | **8. Socios clave** | Incubadoras y aceleradoras, universidades, contadores independientes (canal de referidos con comisión), proveedor de nube, bancos o pasarelas de cobro por QR. |
 | **9. Estructura de costos** | Costos fijos dominados por el equipo; costos variables bajos por cliente (infraestructura, soporte, comisiones de cobro e impuestos). Detalle en [[#Estructura de costos y punto de equilibrio]]. |
 
@@ -69,31 +85,58 @@ Aplicando [[Costo variable y fijo]] y el [[Análisis costo-volumen-utilidad]] al
 
 | Partida | Bs/mes |
 |---|---|
-| Infraestructura base en la nube (servidor de aplicación, base de datos gestionada, respaldos, monitoreo) | 900 |
+| Infraestructura en la nube (servidor, PostgreSQL gestionado, respaldos, monitoreo) | 700 |
 | Herramientas, dominio y correo | 300 |
-| Desarrollador full-stack | 9,000 |
-| Contador y soporte (medio tiempo) | 3,500 |
-| Marketing y comunidad | 2,000 |
-| **Total costos fijos** | **15,700** |
+| Suscripción a Claude (asistente de desarrollo, el "resto del equipo") | 700 |
+| Sueldo del fundador | 7,000 |
+| Contador externo (contabilidad e impuestos de Crecost) | 800 |
+| Marketing digital | 1,000 |
+| Giras comerciales (Bs 10,000/año prorrateados; ver [[Plan de giras comerciales]]) | 833 |
+| **Total costos fijos** | **11,333** |
+
+> [!nota] Supuestos
+> Los montos en dólares (nube y Claude) se convirtieron a Bs 6.96/USD. Con un tipo de cambio mayor, estos costos suben; revisarlos cada trimestre.
+
+**Sensibilidad al plan de Claude** ([[Análisis costo-volumen-utilidad]]):
+
+| Plan de Claude | USD/mes | Bs/mes | Costos fijos | Punto de equilibrio |
+|---|---|---|---|---|
+| Max (5×), **elegido** | 100 | 700 | 11,333 | **≈ 58 startups** |
+| Max (20×), si el uso intensivo lo exige | 200 | 1,392 | 12,025 | ≈ 61 startups |
+
+Subir de plan cuesta solo ~3 clientes más, así que conviene hacerlo si el límite de uso frena el desarrollo: el tiempo del fundador vale más.
 
 ### Margen de contribución por plan
 
-Costos variables por cliente: impuestos sobre la venta (IVA 13 % + IT 3 %), comisión de cobro (~3 %), infraestructura incremental y soporte.
+Costos variables por cliente en dinero: impuestos sobre la venta (IVA 13 % + IT 3 %), comisión de cobro (~3 %) e infraestructura incremental. El soporte no figura porque lo da el fundador: se paga en **tiempo**, no en dinero.
 
-| Plan | Precio | Neto de IVA e IT | − Cobro, infra y soporte | **Margen de contribución** | Mezcla supuesta |
+| Plan | Precio | Neto de IVA e IT | − Cobro e infra | **Margen de contribución** | Mezcla supuesta |
 |---|---|---|---|---|---|
-| Semilla | 119 | 100.0 | 23.6 | **76.4** | 50 % |
-| Crecimiento | 299 | 251.2 | 49.0 | **202.2** | 35 % |
-| Escala | 649 | 545.2 | 109.5 | **435.7** | 15 % |
+| Semilla | 119 | 100.0 | 13.6 | **86.4** | 50 % |
+| Crecimiento | 299 | 251.2 | 24.0 | **227.2** | 35 % |
+| Escala | 649 | 545.2 | 49.5 | **495.7** | 15 % |
 
-**Margen de contribución ponderado ≈ Bs 174 por cliente al mes** ([[Margen de contribución]]).
+**Margen de contribución ponderado ≈ Bs 197 por cliente al mes** ([[Margen de contribución]]).
 
 ### Punto de equilibrio y metas
 
-- **Punto de equilibrio = 15,700 ÷ 174.3 ≈ 91 startups pagando** ([[Punto de equilibrio]]).
-- **Meta del año 1: 150 startups** → utilidad en operación ≈ Bs 10,400/mes, con un **margen de seguridad del 40 %** ([[Margen de seguridad]]).
-- **Regla de sostenibilidad:** por encima del punto de equilibrio, el **30 % de la utilidad** va a un fondo de mejoras (nuevas funcionalidades, deuda técnica) y el **20 %** a una reserva de caja de 6 meses de costos fijos.
-- El negocio es casi todo **costo fijo** (equipo), así que tiene alto [[Apalancamiento operativo]]: pasado el punto de equilibrio, cada cliente nuevo aporta casi todo su margen a la utilidad, pero por debajo se pierde rápido. Por eso la prioridad es llegar pronto a ~91 clientes.
+- **Punto de equilibrio = 11,333 ÷ 197.1 ≈ 58 startups pagando** ([[Punto de equilibrio]]).
+- **Meta del año 1: 100 startups** → utilidad en operación ≈ Bs 8,400/mes, con un **margen de seguridad del 42 %** ([[Margen de seguridad]]).
+- **Regla de sostenibilidad:** por encima del punto de equilibrio, el **30 % de la utilidad** va a un fondo de mejoras (funcionalidades y deuda técnica) y el **20 %** a una reserva de caja de 6 meses de costos fijos.
+- El negocio es casi todo **costo fijo**, así que tiene alto [[Apalancamiento operativo]]: por debajo de ~58 clientes se pierde rápido y por encima casi todo el margen es utilidad.
+
+### Límite de capacidad: el tiempo del fundador
+
+Con una sola persona, la restricción no es el dinero sino las horas (aplicando la idea de [[Costo de oportunidad]] y del recurso restringido del [[Margen de contribución]]):
+
+| Supuesto | Valor |
+|---|---|
+| Horas disponibles al mes | ~160 |
+| Soporte promedio por cliente | ~20 min/mes (más en Escala, menos en Semilla) |
+| Soporte con 100 clientes | ~33 h/mes (≈ 20 % del tiempo) |
+| Tope recomendado antes de contratar soporte | ~200 clientes o 30 % del tiempo en soporte |
+
+Por eso el sistema prioriza el autoservicio: onboarding guiado, ayuda dentro de la app y respuestas frecuentes. Cada ticket evitado es tiempo para desarrollo o ventas.
 
 ### Rentabilidad por cliente
 
@@ -124,9 +167,11 @@ Decisiones técnicas que salen directamente de este modelo:
 
 ## Plan de simulación con dueños de startups
 
+Se simula contacto con **fundadores reales**, incluidas giras presenciales a Cochabamba y Santa Cruz ([[Plan de giras comerciales]]). Las entrevistas siguen el [[Guion de entrevista a fundadores]].
+
 | Fase | Duración | Qué se hace | Criterio de éxito |
 |---|---|---|---|
-| 1. Descubrimiento | 2-3 semanas | 10-15 entrevistas con fundadores. ¿Cómo calculan hoy sus costos? ¿Cuánto pagarían? | ≥ 60 % reconoce el problema; precio meta validado |
+| 1. Descubrimiento | 2-3 semanas | 10-15 entrevistas con fundadores (virtuales y en la 1.ª gira). ¿Cómo calculan hoy sus costos? ¿Cuánto pagarían? | ≥ 60 % reconoce el problema; precio meta validado |
 | 2. Prototipo | 3-4 semanas | Maquetas de las pantallas de costeo y punto de equilibrio; pruebas de usabilidad | Un fundador calcula su PDE solo en < 15 min |
 | 3. Piloto (beta) | 6-8 semanas | MVP con 5-10 startups usando sus datos reales, gratis a cambio de retroalimentación | ≥ 5 startups activas cada semana |
 | 4. Lanzamiento simulado | — | Activar los precios y medir cuántos pilotos "pagarían" | ≥ 40 % de conversión |
@@ -147,4 +192,5 @@ Métricas a seguir: clientes que pagan, MRR (ingreso recurrente mensual), cancel
 | Baja disposición a pagar | Canal incubadoras (paga la institución); validar el precio en la fase 1 |
 | Costos de nube en dólares y riesgo cambiario | Arquitectura frugal y multi-tenant; revisar precios cada 6 meses |
 | Cambios en la normativa tributaria | Aislar los impuestos en un módulo de Infraestructura configurable |
-| Dependencia de un solo desarrollador | Código en capas con pruebas y documentación en esta bóveda |
+| Todo depende de una sola persona (bus factor = 1) | Código en capas con pruebas, ADR y documentación en esta bóveda (cualquiera, con Claude, puede retomar el proyecto); respaldos automáticos; despliegue reproducible |
+| Saturación del fundador por soporte | Autoservicio, límite de capacidad definido arriba, priorizar clientes rentables |

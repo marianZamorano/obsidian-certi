@@ -14,7 +14,10 @@ Catálogo de todas las páginas del wiki. Lo mantiene el LLM; ver [[CLAUDE]] par
 - [[Modelo de dominio]] — módulos del dominio y su relación con los conceptos del wiki.
 - [[ADR-0001 Arquitectura en capas]] — por qué capas y monolito modular.
 - [[ADR-0002 SaaS multi-tenant]] — una instancia y una BD compartida para todas las startups.
-- [[Modelo de negocio]] — SaaS para startups de Bolivia: canvas, planes, punto de equilibrio y plan de simulación.
+- [[ADR-0003 Stack React, NestJS y PostgreSQL]] — monorepo TypeScript con el dominio en un paquete puro.
+- [[Modelo de negocio]] — Crecost, SaaS para startups de Bolivia: canvas, planes, punto de equilibrio y plan de simulación.
+- [[Plan de giras comerciales]] — viajes a Cochabamba y Santa Cruz: calendario, presupuesto, demo y métricas.
+- [[Guion de entrevista a fundadores]] — preguntas para validar el problema y el precio.
 
 ## Panoramas
 
