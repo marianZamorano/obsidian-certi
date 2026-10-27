@@ -5,6 +5,9 @@
 .obsidian/cache
 .obsidian/plugins/*/data.json.bak
 
+# PDFs de fuentes (pesados y con derechos de autor: se quedan solo en local)
+Fuentes/PDFs/*.pdf
+
 # Papelera de Obsidian
 .trash/
 
