@@ -13,6 +13,8 @@ Catálogo de todas las páginas del wiki. Lo mantiene el LLM; ver [[CLAUDE]] par
 - [[Arquitectura del sistema]] — arquitectura en capas del sistema de contabilidad de costos.
 - [[Modelo de dominio]] — módulos del dominio y su relación con los conceptos del wiki.
 - [[ADR-0001 Arquitectura en capas]] — por qué capas y monolito modular.
+- [[ADR-0002 SaaS multi-tenant]] — una instancia y una BD compartida para todas las startups.
+- [[Modelo de negocio]] — SaaS para startups de Bolivia: canvas, planes, punto de equilibrio y plan de simulación.
 
 ## Panoramas
 

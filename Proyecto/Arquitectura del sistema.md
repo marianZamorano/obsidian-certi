@@ -69,5 +69,7 @@ Un caso de uso por intención del usuario. Ejemplos:
 
 - [ ] Lenguaje y framework (afecta solo a Presentación e Infraestructura).
 - [ ] Motor de base de datos.
-- [ ] Alcance de la primera versión (propuesta: módulos de Clasificación de costos, Costeo por órdenes y CVU).
-- [ ] Monolito modular frente a servicios separados (propuesta: monolito modular; ver ADR-0001).
+- [ ] Alcance de la primera versión (propuesta: los módulos del plan Semilla del [[Modelo de negocio]]: Clasificación de costos y CVU).
+- [x] Monolito modular frente a servicios separados → monolito modular ([[ADR-0001 Arquitectura en capas]]).
+- [x] Cómo atender a muchas startups → multi-tenant con base de datos compartida ([[ADR-0002 SaaS multi-tenant]]).
+- [ ] Proveedor de facturación electrónica (SIN) y de cobro por QR.

@@ -21,6 +21,8 @@ El sistema debe ayudar a los gerentes en los tres propósitos que plantea el lib
 2. **Planear y controlar:** presupuesto maestro, presupuesto flexible, costos estándar y análisis de variaciones.
 3. **Tomar decisiones:** análisis costo-volumen-utilidad (punto de equilibrio, margen de seguridad), costos relevantes, fijación de precios, costo meta y rentabilidad del cliente.
 
+**Contexto de negocio (simulación):** SaaS por suscripción para **startups de Bolivia** (precios en bolivianos, IVA 13 % e IT 3 %, facturación electrónica del SIN). No sale realmente a producción: se simula el lanzamiento y el contacto con dueños de startups. Toda decisión técnica debe mantener bajo el costo de operación (multi-tenant, monolito modular). Ver [[Modelo de negocio]] y [[ADR-0002 SaaS multi-tenant]].
+
 Vocabulario: el código y la documentación usan los términos del libro en español (*objeto de costo*, *grupo común de costos*, *base de aplicación*, *tasa presupuestada*, *variación favorable/desfavorable*). Si se necesita un término nuevo, primero se agrega al wiki.
 La bóveda sigue un modelo de 3 capas:
 
